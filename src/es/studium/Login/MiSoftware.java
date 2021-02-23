@@ -70,14 +70,14 @@ public class MiSoftware implements WindowListener, ActionListener
 
 	Menu mnuProyectos = new Menu("Proyectos");
 	MenuItem mniAltaProyecto = new MenuItem("Alta");
-	MenuItem mniBajaProyecto = new MenuItem("Baja");
-	MenuItem mniModificacionProyecto = new MenuItem("Modificación");
+	//MenuItem mniBajaProyecto = new MenuItem("Baja");
+	//MenuItem mniModificacionProyecto = new MenuItem("Modificación");
 	MenuItem mniConsultaProyecto= new MenuItem("Consulta");
 
 	Menu mnuAsignaciones = new Menu("Asignaciones");
 	MenuItem mniAltaAsignacion = new MenuItem("Alta");
-	MenuItem mniBajaAsignacion = new MenuItem("Baja");
-	MenuItem mniModificacionAsignacion = new MenuItem("Modificación");
+	//MenuItem mniBajaAsignacion = new MenuItem("Baja");
+	//MenuItem mniModificacionAsignacion = new MenuItem("Modificación");
 	MenuItem mniConsultaAsignacion = new MenuItem("Consulta");
 
 	BaseDatos bd;
@@ -110,11 +110,12 @@ public class MiSoftware implements WindowListener, ActionListener
 		}
 		mnBar.add(mnuEmpleados);
 
+		mniAltaProyecto.addActionListener(this);
 		mnuProyectos.add(mniAltaProyecto);
 		if(tipo==0) // ¿Es administrador?
 		{
-			mnuProyectos.add(mniBajaProyecto);
-			mnuProyectos.add(mniModificacionProyecto);
+			//mnuProyectos.add(mniBajaProyecto);
+			//mnuProyectos.add(mniModificacionProyecto);
 			mnuProyectos.add(mniConsultaProyecto);
 		}
 		mnBar.add(mnuProyectos);
@@ -122,8 +123,8 @@ public class MiSoftware implements WindowListener, ActionListener
 		mnuAsignaciones.add(mniAltaAsignacion);
 		if(tipo==0) // ¿Es administrador?
 		{
-			mnuAsignaciones.add(mniBajaAsignacion);
-			mnuAsignaciones.add(mniModificacionAsignacion);
+			//mnuAsignaciones.add(mniBajaAsignacion);
+			//mnuAsignaciones.add(mniModificacionAsignacion);
 			mnuAsignaciones.add(mniConsultaAsignacion);
 		}
 		mnBar.add(mnuAsignaciones);
@@ -166,6 +167,9 @@ public class MiSoftware implements WindowListener, ActionListener
 		}
 		else if(dlgConfirmacionBajaCliente.isActive())
 		{
+			btnSiSeguroCliente.removeActionListener(this);
+			btnNoSeguroCliente.removeActionListener(this);
+			btnBorrarCliente.removeActionListener(this);
 			dlgConfirmacionBajaCliente.setVisible(false);
 			dlgSeguroCliente.setVisible(false);
 			frmBajaCliente.setVisible(false);
@@ -240,6 +244,7 @@ public class MiSoftware implements WindowListener, ActionListener
 				dlgConfirmarAltaCliente.setLocationRelativeTo(null);
 				dlgConfirmarAltaCliente.add(lblMensajeAltaCliente);
 				dlgConfirmarAltaCliente.setVisible(true);
+				bd.desconectar(connection);
 			}
 		}
 		else if(evento.getSource().equals(mniConsultaCliente))
@@ -378,6 +383,10 @@ public class MiSoftware implements WindowListener, ActionListener
 				dlgConfirmacionBajaCliente.add(lblConfirmacionBajaCliente);
 				dlgConfirmacionBajaCliente.setVisible(true);
 			}
+		}
+		else if(evento.getSource().equals(mniAltaProyecto))
+		{
+			new AltaProyecto();
 		}
 	}
 }

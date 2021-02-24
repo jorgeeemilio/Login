@@ -39,9 +39,11 @@ public class Login implements WindowListener, ActionListener
 		ventanaLogin.setLayout(new FlowLayout());
 		
 		ventanaLogin.add(lblUsuario);
+		txtUsuario.setText("admin");
 		ventanaLogin.add(txtUsuario);
 		ventanaLogin.add(lblClave);
 		txtClave.setEchoChar('*');
+		txtClave.setText("Studium2020;");
 		ventanaLogin.add(txtClave);
 		btnAceptar.addActionListener(this);
 		ventanaLogin.add(btnAceptar);

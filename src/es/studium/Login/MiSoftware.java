@@ -95,6 +95,7 @@ public class MiSoftware implements WindowListener, ActionListener
 		{
 			mniBajaCliente.addActionListener(this);
 			mnuClientes.add(mniBajaCliente);
+			mniModificacionCliente.addActionListener(this);
 			mnuClientes.add(mniModificacionCliente);
 			mniConsultaCliente.addActionListener(this);
 			mnuClientes.add(mniConsultaCliente);
@@ -279,7 +280,7 @@ public class MiSoftware implements WindowListener, ActionListener
 			}
 			catch (SQLException sqle)
 			{
-				lblMensajeAltaCliente.setText("Error en ALTA");
+				listadoClientes.setText("Se ha producido un error en la consulta");
 			}
 			finally
 			{
@@ -323,7 +324,7 @@ public class MiSoftware implements WindowListener, ActionListener
 			}
 			catch (SQLException sqle)
 			{
-				lblMensajeAltaCliente.setText("Error en ALTA");
+
 			}
 			frmBajaCliente.add(choClientes);
 			btnBorrarCliente.addActionListener(this);
@@ -387,6 +388,10 @@ public class MiSoftware implements WindowListener, ActionListener
 		else if(evento.getSource().equals(mniAltaProyecto))
 		{
 			new AltaProyecto();
+		}
+		else if(evento.getSource().equals(mniModificacionCliente))
+		{
+			new ModificarCliente();
 		}
 	}
 }

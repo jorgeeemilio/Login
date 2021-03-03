@@ -81,11 +81,13 @@ public class MiSoftware implements WindowListener, ActionListener
 		}
 		mnBar.add(mnuProyectos);
 
+		mniAltaAsignacion.addActionListener(this);
 		mnuAsignaciones.add(mniAltaAsignacion);
 		if(tipo==0) // ¿Es administrador?
 		{
 			//mnuAsignaciones.add(mniBajaAsignacion);
 			//mnuAsignaciones.add(mniModificacionAsignacion);
+			mniConsultaAsignacion.addActionListener(this);
 			mnuAsignaciones.add(mniConsultaAsignacion);
 		}
 		mnBar.add(mnuAsignaciones);
@@ -155,6 +157,13 @@ public class MiSoftware implements WindowListener, ActionListener
 			new ConsultaProyecto();
 		}
 		// Asignaciones
-		
+		else if(evento.getSource().equals(mniAltaAsignacion))
+		{
+			new AltaAsignacion();
+		}
+		else if(evento.getSource().equals(mniConsultaAsignacion))
+		{
+			new ConsultaAsignacion();
+		}
 	}
 }

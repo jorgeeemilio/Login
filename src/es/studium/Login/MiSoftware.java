@@ -9,9 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class MiSoftware implements WindowListener, ActionListener
 {
@@ -43,12 +40,6 @@ public class MiSoftware implements WindowListener, ActionListener
 	//MenuItem mniBajaAsignacion = new MenuItem("Baja");
 	//MenuItem mniModificacionAsignacion = new MenuItem("Modificación");
 	MenuItem mniConsultaAsignacion = new MenuItem("Consulta");
-
-	BaseDatos bd;
-	String sentencia = "";
-	Connection connection = null;
-	Statement statement = null;
-	ResultSet rs = null;
 
 	public MiSoftware(int tipo)
 	{
@@ -85,6 +76,7 @@ public class MiSoftware implements WindowListener, ActionListener
 		{
 			//mnuProyectos.add(mniBajaProyecto);
 			//mnuProyectos.add(mniModificacionProyecto);
+			mniConsultaProyecto.addActionListener(this);
 			mnuProyectos.add(mniConsultaProyecto);
 		}
 		mnBar.add(mnuProyectos);
@@ -158,8 +150,11 @@ public class MiSoftware implements WindowListener, ActionListener
 		{
 			new AltaProyecto();
 		}
+		else if(evento.getSource().equals(mniConsultaProyecto))
+		{
+			new ConsultaProyecto();
+		}
 		// Asignaciones
-		
 		
 	}
 }

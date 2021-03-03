@@ -103,10 +103,17 @@ public class AltaProyecto implements WindowListener, ActionListener
 			connection = bd.conectar();
 			try
 			{
+				String[] fechaInicioEuropea = txtFechaInicio.getText().split("/");
+				// fechaEuropea[0] --> día
+				// fechaEuropea[1] --> mes
+				// fechaEuropea[2] --> año
+				String[] fechaFinEuropea = txtFechaFin.getText().split("/");
 				sentencia = "INSERT INTO proyectos VALUES(null, '"
 						+txtNombre.getText()+"','"
-						+txtFechaInicio.getText()+"','"
-						+txtFechaFin.getText()+"',"
+						+fechaInicioEuropea[2]+"-"+fechaInicioEuropea[1]+"-"
+						+fechaInicioEuropea[0]+ "','"
+						+fechaFinEuropea[2]+"-"+fechaFinEuropea[1]+"-"
+						+fechaFinEuropea[0]+"',"
 						+choClientes.getSelectedItem().split("-")[0]
 						+")";
 				//Crear una sentencia
